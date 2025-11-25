@@ -1,0 +1,39 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class keylogger1 {
+
+    public static void main(String[] args) {
+
+        JFrame frame = new JFrame("Simple Keylogger");
+        JTextArea textArea = new JTextArea();
+
+        frame.add(textArea);
+        frame.setSize(400, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+
+        textArea.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+                try (FileWriter writer = new FileWriter("keystrokes.log", true)) {
+
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    String dateTime = LocalDateTime.now().format(formatter);
+
+                    String keyText = KeyEvent.getKeyText(e.getKeyCode());
+
+                    writer.write("[" + dateTime + "] " + keyText + "\n");
+
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+    }
+}
