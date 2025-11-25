@@ -10,8 +10,8 @@ The goal of this application is to help learners undersatand:
   Why ethical programming matters in cybersecurity.
 
   Features of this Project includes,
-   -> Application-level keylogging,
-   -> Timestamped logging,
-   -> Lightweight GUI,
-   -> Real-time file generation,
-   -> Safe & ethical.
+    Application-level keylogging,
+    Timestamped logging,
+    Lightweight GUI,
+    Real-time file generation,
+    Safe & ethical.
